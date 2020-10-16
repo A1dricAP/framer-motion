@@ -5,7 +5,8 @@ import {motion} from 'framer-motion'
 const Home = () => {
   return (
     <motion.div 
-    animate={{}}
+    initial={{opacity:0}}
+    animate={{opacity:1}}
     className="home container">
       <h2>Welcome to Pizza Joint</h2>
       <Link to="/base">

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {motion, AnimatePresence} from 'framer-motion'
+import {motion} from 'framer-motion'
 const containerVariants={
   hidden:{
     opacity:0,
@@ -15,6 +15,10 @@ const containerVariants={
       damping:'8',
       staggerChildren:'0.4'
     }
+  },
+  exit:{
+    x:'-100vw',
+    transition:{ease:'easeInOut'}
   }
 }
 
@@ -27,25 +31,19 @@ const childVariants={
   }
 }
 const Order = ({ pizza }) => {
-  const [showTitle, setShowTitle]=useState(true)
-  setTimeout(()=>{
-    setShowTitle(false)
-  },4000)
+  
 
   return (
     <motion.div className="container order"
     variants={containerVariants}
     initial='hidden'
-    animate='visible'>
+    animate='visible'
+    exit='exit'>
 
-    <AnimatePresence>
+    
 {/* here we're saying that showtitle must be true, for the <h2> to be displayed. */}
-      {showTitle&&(
-        <motion.h2
-        exit={{opacity:0}}>Thank you for your order :)</motion.h2>
-      )}
-    </AnimatePresence>
       
+      <h2>Thank you for your order :)</h2>
       <motion.p
       variants={childVariants}>You ordered a {pizza.base} pizza with:</motion.p>
       <motion.div

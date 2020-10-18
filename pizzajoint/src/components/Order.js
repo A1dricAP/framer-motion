@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import {motion} from 'framer-motion'
 const containerVariants={
   hidden:{
@@ -30,8 +30,18 @@ const childVariants={
     opacity:1
   }
 }
-const Order = ({ pizza }) => {
+const Order = ({ pizza, setShowModal }) => {
   
+  useEffect(()=>{
+    setTimeout(()=>{
+      setShowModal(true)
+    },5000)
+  },[setShowModal])  //* dependency
+  /*
+  To customize the above behavior, we can use an array of 
+  dependencies as a second argument of the useEffect hook. 
+  With it, the callback runs only if some of the elements of the array change.
+  */
 
   return (
     <motion.div className="container order"
